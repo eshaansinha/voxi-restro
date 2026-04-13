@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState, useRef } from 'react'
+import { ShieldCheck } from 'lucide-react'
 
 export default function HeroSection() {
   const [isVisible, setIsVisible] = useState(false)
@@ -35,6 +36,18 @@ export default function HeroSection() {
 
   return (
     <section className="relative w-full min-h-screen bg-primary text-primary-foreground flex items-center justify-center px-4 md:px-8 py-16">
+      
+      {/* Custom Subtle Float Animation */}
+      <style dangerouslySetInnerHTML={{__html: `
+        @keyframes subtle-float {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-12px); }
+        }
+        .animate-subtle-float {
+          animation: subtle-float 2s ease-in-out infinite;
+        }
+      `}} />
+
       <div
         className="absolute inset-0 opacity-5 pointer-events-none"
         style={{
@@ -55,11 +68,25 @@ export default function HeroSection() {
           Stop Losing $3,000+ A Month To Missed Friday Night Phone Calls.
         </h1>
 
-        <p className={`text-lg md:text-xl text-center text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+        <p className={`text-lg md:text-xl text-center text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           Voxy Restro is an AI agent that answers every call on the first ring, takes orders, integrates with Toast/OpenTable, and never asks for a smoke break.
         </p>
 
-        <div className={`w-full transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
+        {/* Current Season Offer Banner - Balanced Size */}
+        <div className={`flex justify-center mb-14 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'} animate-subtle-float`}>
+          <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 bg-black/40 backdrop-blur-sm border border-accent/40 shadow-[0_0_25px_rgba(255,107,53,0.15)] rounded-3xl sm:rounded-full px-6 py-4 md:px-8 md:py-4 max-w-[95%] sm:max-w-none text-center sm:text-left">
+            <div className="bg-accent/20 p-2 rounded-full flex-shrink-0 mb-1 sm:mb-0">
+              <ShieldCheck className="w-6 h-6 text-accent" />
+            </div>
+            <p className="text-sm md:text-base font-medium text-gray-200 leading-snug">
+              <span className="block sm:inline font-bold text-accent uppercase tracking-wide sm:mr-3 text-base md:text-lg mb-1 sm:mb-0">Current Season Offer:</span> 
+              $300 custom setup. If it doesn't pay for itself in 30 days, <span className="block sm:inline font-bold text-white mt-1 sm:mt-0">you get a full refund.</span>
+            </p>
+          </div>
+        </div>
+
+        {/* Video Player */}
+        <div className={`w-full transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
           <div
             className="relative w-full aspect-video bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden"
             style={{ boxShadow: '0 0 80px rgba(255, 107, 53, 0.35), 0 0 140px rgba(255, 107, 53, 0.15)' }}
