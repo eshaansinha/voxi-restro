@@ -36,7 +36,7 @@ export default function Home() {
       {showCall && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
           <VoiceCallWidget
-            agentId="9f51ae7b-944d-47b7-9baa-295c1f1f6f2c"
+            agentId="111537bb-20d4-4aa2-ac36-7964c91ad715"
             agentName="Sofia"
             tokenUrl="/api/call/token"
             onClose={() => setShowCall(false)}
